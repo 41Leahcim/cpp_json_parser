@@ -45,13 +45,13 @@ Array::Array(JsonFile& file){
             error << "Invalid seperator in array (" << file.get_row() << ", " << file.get_column() << ")\n";
             throw JsonException(error.str());
         }else if(file.get() == ']'){
-            if(file.has_next()){
-                file.next();
-            }
             break;
         }
         file.next();
         skip_whitespace(file);
+    }
+    if(file.has_next()){
+        file.next();
     }
 }
 

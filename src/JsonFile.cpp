@@ -52,6 +52,12 @@ bool JsonFile::operator==(const char *string){
     size_t length = strlen(string);
     if(line.substr(column, length) == string){
         column += length;
+        if(column == line.length() && next_line_valid){
+            row++;
+            column = 0;
+            line = next_line;
+            next_line_valid = static_cast<bool>(std::getline(file, next_line));
+        }
         return true;
     }
     return false;

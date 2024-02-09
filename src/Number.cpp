@@ -36,9 +36,7 @@ Number::Number(JsonFile& file){
         dot_found = dot_found || file.get() == '.';
         number_string += file.get();
         file.next();
-        std::cout << number_string << '\n';
     }
-    std::cout << file.get() << ' ' << file.has_next() << '\n';
     if(is_digit(file.get())){
         number_string += file.get();
     }
