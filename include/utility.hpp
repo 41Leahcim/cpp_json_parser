@@ -1,9 +1,13 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
-void skip_whitespace(const std::string& string, size_t& i){
-    while(i < string.length() && (string[i] == ' ' || string[i] == '\t' || string[i] == '\n')){
-        i++;
-    }
-}
+class Json;
+class JsonFile;
+
+void skip_whitespace(const std::string& string, size_t& i);
+void skip_whitespace(JsonFile& file);
+
+std::shared_ptr<Json> parse_json(const std::string& string, size_t& i); 
+std::shared_ptr<Json> parse_json(JsonFile& file); 

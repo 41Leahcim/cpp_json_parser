@@ -1,12 +1,13 @@
 #pragma once
 
 #include <exception>
+#include <string>
 
 class JsonException: public std::exception{
 private:
-    const char *message;
+    std::string message;
 public:
-    JsonException(const char *message);
+    JsonException(std::string message);
     ~JsonException(){}
     const char* what() const noexcept override;
 };
